@@ -6,6 +6,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface BookMapper extends GenericMapper<BookDTO, Book> {
+public interface BookMapper extends GenericMapper<Book, BookDTO> {
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 }

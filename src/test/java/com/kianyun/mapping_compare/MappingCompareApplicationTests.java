@@ -2,6 +2,8 @@ package com.kianyun.mapping_compare;
 
 import com.kianyun.mapping_compare.domain.dto.BookDTO;
 import com.kianyun.mapping_compare.domain.mapper.BookMapper;
+import com.kianyun.mapping_compare.domain.mapper.CMapper;
+import com.kianyun.mapping_compare.domain.mapper.CModelMapper;
 import com.kianyun.mapping_compare.domain.model.Book;
 import com.kianyun.mapping_compare.domain.model.CurrencyType;
 import lombok.extern.slf4j.Slf4j;
@@ -41,18 +43,35 @@ class MappingCompareApplicationTests {
         log.info("YKD : " + book.toString());
     }
 
-    @Test
-    public void test_use_map_struct() {
-        Book book = Book.builder()
-                .title("Selfish Gene")
-                .author("Lichard Dokins")
-                .price(24000L)
-                .currencyType(CurrencyType.builder().type("KRW").build())
-                .aka("Rich")
-                .createAt(LocalDate.of(1984, 6, 20)).build();
-
-        BookDTO bookDTO = BookMapper.INSTANCE.to(book);
-
-        log.info("YKD : " + bookDTO.toString());
-    }
+//    @Test
+//    public void test_use_map_struct() {
+//        Book book = Book.builder()
+//                .title("Selfish Gene")
+//                .author("Lichard Dokins")
+//                .price(24000L)
+//                .currencyType(CurrencyType.builder().type("KRW").build())
+//                .aka("Rich")
+//                .createAt(LocalDate.of(1984, 6, 20)).build();
+//
+//        BookDTO bookDTO = BookMapper.INSTANCE.to(book);
+//
+//        log.info("YKD : " + bookDTO.toString());
+//    }
+//
+//    @Test
+//    public void test_use_c_mapper() {
+//        CMapper mapper = new CModelMapper();
+//
+//        BookDTO bookDTO = BookDTO.builder()
+//                .title("Selfish Gene")
+//                .author("Lichard Dokins")
+//                .price(24000L)
+//                .currencyType(CurrencyType.builder().type("KRW").build())
+//                .nickName("Rich")
+//                .publishedAt(LocalDate.of(1984, 6,20)).build();
+//
+//        Book book = mapper.map(bookDTO, Book.class);
+//
+//        log.info("YKD : " + book.toString());
+//    }
 }
