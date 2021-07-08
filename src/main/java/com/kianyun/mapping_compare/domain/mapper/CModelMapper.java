@@ -7,13 +7,15 @@ import java.util.function.Supplier;
 
 public class CModelMapper<D, E> implements GenericMapper<D, E> {
     private final ModelMapper mapper;
+    private final Supplier<E> supplier;
 
-    public CModelMapper(ModelMapper mapper) {
+    public CModelMapper(ModelMapper mapper, Supplier<E> supplier) {
         this.mapper = mapper;
+        this.supplier = supplier;
     }
 
     @Override
-    public D map(E e) {
-        return mapper.map();
+    public E map(D e) {
+        return mapper.map(e, (Type) supplier.get().getClass());
     }
 }
