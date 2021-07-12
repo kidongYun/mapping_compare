@@ -1,10 +1,7 @@
 package com.kianyun.mapping_compare;
 
 import com.kianyun.mapping_compare.domain.dto.BookDTO;
-import com.kianyun.mapping_compare.domain.mapper.BookMapper;
-import com.kianyun.mapping_compare.domain.mapper.CMapper;
-import com.kianyun.mapping_compare.domain.mapper.CModelMapper;
-import com.kianyun.mapping_compare.domain.mapper.GenericMapper;
+import com.kianyun.mapping_compare.domain.mapper.*;
 import com.kianyun.mapping_compare.domain.model.Book;
 import com.kianyun.mapping_compare.domain.model.CurrencyType;
 import lombok.extern.slf4j.Slf4j;
@@ -57,6 +54,25 @@ class MappingCompareApplicationTests {
                 .publishedAt(LocalDate.of(1984, 6,20)).build();
 
         Book book = mapper.map(bookDTO);
+
+        log.info("YKD : " + book.toString());
+    }
+
+    @Test
+    public void test_use_map_struct() {
+        GenericMapper<BookDTO, Book> mapper = new BookMapperImpl();
+
+        BookDTO bookDTO = BookDTO.builder()
+                .title("Selfish Gene")
+                .author("Lichard Dokins")
+                .price(24000L)
+                .currencyType(CurrencyType.builder().type("KRW").build())
+                .nickName("Rich")
+                .publishedAt(LocalDate.of(1984, 6,20)).build();
+
+        Book book = mapper.map(bookDTO);
+
+        log.info("YKD : " + book.toString());
     }
 
 //    @Test

@@ -1,5 +1,8 @@
 package com.kianyun.mapping_compare.domain.mapper;
 
-public interface GenericMapper<D, E> {
-    E map(D e);
+import org.springframework.stereotype.Component;
+
+@Component
+public interface GenericMapper<S, D> {
+    D map(S e);
 }
